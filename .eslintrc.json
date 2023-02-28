@@ -17,6 +17,7 @@
         "lines-between-class-members": ["error", "never"],
         "import/no-unresolved": "off",
         "import/extensions": "off",
-        "no-console": "off"
+        "no-console": "off",
+        "quotes": [2, "single", { "avoidEscape": true }]
     }
 }
