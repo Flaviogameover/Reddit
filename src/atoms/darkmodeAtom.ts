@@ -1,8 +1,8 @@
-import {atom} from "recoil";
+import { atom } from "recoil";
 
 interface DarkModeState {
     darkMode: boolean;
-};
+}
 
 const defaultDarkModeState: DarkModeState = {
     darkMode: false,

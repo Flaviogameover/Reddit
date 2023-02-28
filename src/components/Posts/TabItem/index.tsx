@@ -1,6 +1,6 @@
+import { Flex, Icon, Text } from "@chakra-ui/react";
 import React from "react";
 import { TFormTabs } from "../NewPostForm";
-import { Flex, Text, Icon } from "@chakra-ui/react";
 
 type TTabItem = {
     item: TFormTabs;
@@ -27,12 +27,24 @@ const TabItem: React.FC<TTabItem> = ({
             fontWeight={700}
             _hover={{ bg: darkMode ? "dark_border" : "gray.50" }}
             color={
-                selected ? (darkMode ? "dark_text" : "blue.500") : darkMode ? "#6e6e6e" : "gray.500"
+                selected
+                    ? darkMode
+                        ? "dark_text"
+                        : "blue.500"
+                    : darkMode
+                    ? "#6e6e6e"
+                    : "gray.500"
             }
             borderWidth={"0 1px 2px 0"}
             borderRightColor={"gray.200"}
             borderBottomColor={
-                selected ? (darkMode ? "dark_text" : "blue.500") : darkMode ? "#6e6e6e" :"gray.200"
+                selected
+                    ? darkMode
+                        ? "dark_text"
+                        : "blue.500"
+                    : darkMode
+                    ? "#6e6e6e"
+                    : "gray.200"
             }
             onClick={() => setSelectedForm(item.title)}
         >

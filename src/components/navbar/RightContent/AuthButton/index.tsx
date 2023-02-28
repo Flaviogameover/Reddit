@@ -1,8 +1,8 @@
-import { Button } from "@chakra-ui/react";
-import { useRecoilValue, useSetRecoilState } from "recoil";
 import { authModalState } from "@/atoms/authModalAtom";
-import React from "react";
 import { darkModeState } from "@/atoms/darkmodeAtom";
+import { Button } from "@chakra-ui/react";
+import React from "react";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 
 type TAuth = {};
 
@@ -23,7 +23,7 @@ const AuthButtons: React.FC = () => {
                     md: "110px",
                 }}
                 mr={2}
-                onClick={()=>setAuthModalState({open:true, type:"login"})}
+                onClick={() => setAuthModalState({ open: true, type: "login" })}
             >
                 Log in
             </Button>
@@ -39,8 +39,12 @@ const AuthButtons: React.FC = () => {
                     md: "110px",
                 }}
                 mr={2}
-                onClick={()=>setAuthModalState({open:true, type:"signup"})}
-                >Sign Up</Button>
+                onClick={() =>
+                    setAuthModalState({ open: true, type: "signup" })
+                }
+            >
+                Sign Up
+            </Button>
         </>
     );
 };

@@ -7,7 +7,11 @@ type TSearchType = {
     darkMode: boolean;
 };
 
-const SearchType: React.FC<TSearchType> = ({ handleClickType, type, darkMode }) => {
+const SearchType: React.FC<TSearchType> = ({
+    handleClickType,
+    type,
+    darkMode,
+}) => {
     return (
         <Button
             variant={darkMode ? "dark" : "outline"}

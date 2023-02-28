@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import { useSetRecoilState } from "recoil";
 import { authModalState } from "@/atoms/authModalAtom";
 import { auth } from "@/firebase/clientApp";
 import { Button, Flex, Icon, Input, Text } from "@chakra-ui/react";
+import React, { useState } from "react";
 import { useSendPasswordResetEmail } from "react-firebase-hooks/auth";
 import { BsReddit } from "react-icons/bs";
+import { useSetRecoilState } from "recoil";
 
 const ResetPassword: React.FC = () => {
     const setAuthModalState = useSetRecoilState(authModalState);

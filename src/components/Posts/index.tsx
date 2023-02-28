@@ -3,7 +3,15 @@ import { Post } from "@/atoms/postsAtom";
 import { auth, firestore } from "@/firebase/clientApp";
 import usePosts from "@/hooks/usePosts";
 import { Button, Stack, Text } from "@chakra-ui/react";
-import { collection, getDocs, limit, orderBy, query, startAfter, where } from "firebase/firestore";
+import {
+    collection,
+    getDocs,
+    limit,
+    orderBy,
+    query,
+    startAfter,
+    where,
+} from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import PostItem from "./PostItem";
@@ -35,7 +43,7 @@ const Posts: React.FC<TPosts> = ({ communityData, darkMode }) => {
                 where("communityId", "==", communityData.id),
                 orderBy("createdAt", "desc"),
                 startAfter(communityData.createdAt),
-                limit(5),
+                limit(5)
             );
 
             const postDocs = await getDocs(postsQuery);
@@ -47,7 +55,6 @@ const Posts: React.FC<TPosts> = ({ communityData, darkMode }) => {
                 ...prev,
                 posts: posts as Post[],
             }));
-
         } catch (e: any) {
             console.log("GetPosts Error: ", e.message);
         }
@@ -62,7 +69,7 @@ const Posts: React.FC<TPosts> = ({ communityData, darkMode }) => {
                 where("communityId", "==", communityData.id),
                 orderBy("createdAt", "desc"),
                 startAfter(communityData.createdAt),
-                limit(5 * (page + 1)),
+                limit(5 * (page + 1))
             );
 
             const postDocs = await getDocs(postsQuery);
@@ -74,7 +81,6 @@ const Posts: React.FC<TPosts> = ({ communityData, darkMode }) => {
                 ...prev,
                 posts: posts as Post[],
             }));
-
         } catch (e: any) {
             console.log("GetPosts Error: ", e.message);
         }
@@ -89,31 +95,41 @@ const Posts: React.FC<TPosts> = ({ communityData, darkMode }) => {
     return (
         <>
             {loading ? (
-                <PostLoader darkMode={darkMode}/>
+                <PostLoader darkMode={darkMode} />
             ) : !postStateValue.posts.length ? (
-                <Text fontSize={"xl"} fontWeight={700} color={"gray.500"}>
+                <Text
+                    fontSize={"xl"}
+                    fontWeight={700}
+                    color={darkMode ? "dark_text" : "gray.500"}
+                >
                     No posts yet
                 </Text>
             ) : (
                 <Stack>
                     <>
-                    {postStateValue.posts.map((post) => (
-                        <PostItem
-                            key={post.id}
-                            post={post}
-                            userIsCreator={user?.uid === post.creatorId}
-                            userVoteValue={
-                                postStateValue.postVotes.find(
-                                    (vote) => vote.postId === post.id
-                                )?.voteValue
-                            }
-                            onVote={onVote}
-                            onDeletePost={onDeletePost}
-                            onSelectPost={onSelectPost}
-                            darkMode={darkMode}
-                        />
-                    ))}
-                    <Button variant={darkMode ? "dark" : "outline"} onClick={loadMorePosts} isLoading={loadMore}>Load More</Button>
+                        {postStateValue.posts.map((post) => (
+                            <PostItem
+                                key={post.id}
+                                post={post}
+                                userIsCreator={user?.uid === post.creatorId}
+                                userVoteValue={
+                                    postStateValue.postVotes.find(
+                                        (vote) => vote.postId === post.id
+                                    )?.voteValue
+                                }
+                                onVote={onVote}
+                                onDeletePost={onDeletePost}
+                                onSelectPost={onSelectPost}
+                                darkMode={darkMode}
+                            />
+                        ))}
+                        <Button
+                            variant={darkMode ? "dark" : "outline"}
+                            onClick={loadMorePosts}
+                            isLoading={loadMore}
+                        >
+                            Load More
+                        </Button>
                     </>
                 </Stack>
             )}

@@ -1,18 +1,18 @@
+import { darkModeState } from "@/atoms/darkmodeAtom";
+import { defaultMenuItem } from "@/atoms/directoryMenuAtom";
 import { auth } from "@/firebase/clientApp";
+import useDirectory from "@/hooks/useDirectory";
 import { Flex, Image } from "@chakra-ui/react";
+import Directory from "@navbar/Directory";
 import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { useRecoilValue } from "recoil";
 import RightContent from "./rightContent";
 import SearchInput from "./searchInput";
-import Directory from "@navbar/Directory";
-import useDirectory from "@/hooks/useDirectory";
-import { defaultMenuItem } from "@/atoms/directoryMenuAtom";
-import { useRecoilValue } from "recoil";
-import { darkModeState } from "@/atoms/darkmodeAtom";
 
 const Navbar: React.FC = () => {
     const [user, loading, error] = useAuthState(auth);
-    const {darkMode} = useRecoilValue(darkModeState);
+    const { darkMode } = useRecoilValue(darkModeState);
     const { onSelectMenuItem } = useDirectory();
     return (
         <Flex
@@ -46,7 +46,7 @@ const Navbar: React.FC = () => {
                     display={{ base: "none", md: "unset" }}
                 />
             </Flex>
-            {user && <Directory darkMode={darkMode}/>}
+            {user && <Directory darkMode={darkMode} />}
             <SearchInput user={user} />
             <RightContent user={user} />
         </Flex>

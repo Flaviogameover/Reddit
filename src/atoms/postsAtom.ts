@@ -21,7 +21,7 @@ export type PostVote = {
     postId: string;
     communityId: string;
     voteValue: number;
-}
+};
 
 interface PostState {
     selectedPost: Post | null;

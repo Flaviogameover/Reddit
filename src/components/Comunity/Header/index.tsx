@@ -16,15 +16,15 @@ const Header: React.FC<THeader> = ({ communityData, darkMode }) => {
     const isJoined: boolean = !!communityStateValue.mySnippets.find(
         (item) => item.communityId === communityData.id
     );
-    const bannerImage = communityStateValue.currentCommunity?.banner;
+    const {banner} = communityStateValue.currentCommunity || {};
 
     return (
         <Flex
             direction={"column"}
             width={"100%"}
-            height={bannerImage ? "300px" : "146px"}
+            height={banner ? "300px" : "146px"}
         >
-            {bannerImage ? (
+            {banner ? (
                 <Flex
                     position={"relative"}
                     width={"100%"}
@@ -32,9 +32,9 @@ const Header: React.FC<THeader> = ({ communityData, darkMode }) => {
                     direction={"column"}
                 >
                     <Image
-                        src={bannerImage}
+                        src={banner}
                         boxSize={"100%"}
-                        objectFit={"fill"}
+                        objectFit={"cover"}
                         alt={"community banner"}
                     />
                     <div
@@ -83,13 +83,13 @@ const Header: React.FC<THeader> = ({ communityData, darkMode }) => {
                     )}
                     <Flex padding={"10px 6px"}>
                         <Flex direction={"column"} mr={6}>
-                            <Text 
-                                {
-                                    ...darkMode && {
-                                        color: "dark_text",
-                                    }
-                                }
-                            fontWeight={800} fontSize={"16pt"}>
+                            <Text
+                                {...(darkMode && {
+                                    color: "dark_text",
+                                })}
+                                fontWeight={800}
+                                fontSize={"16pt"}
+                            >
                                 {communityData.id}
                             </Text>
                             <Text

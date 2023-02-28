@@ -10,14 +10,7 @@ import SearchCommunity from "@/components/Posts/SearchCommunity";
 import SearchPost from "@/components/Posts/SearchPost";
 import { auth, firestore } from "@/firebase/clientApp";
 import useCommunityData from "@/hooks/useCommunityData";
-import {
-    Button,
-    Flex,
-    Skeleton,
-    SkeletonCircle,
-    Text,
-    Stack,
-} from "@chakra-ui/react";
+import { Flex, Skeleton, SkeletonCircle, Stack, Text } from "@chakra-ui/react";
 import { collection, getDocs, orderBy, query, where } from "firebase/firestore";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
@@ -207,7 +200,7 @@ const SearchPage: React.FC = () => {
                                                           community as Community
                                                       }
                                                       isJoined={isJoined}
-                                                  darkMode={darkMode}
+                                                      darkMode={darkMode}
                                                   />
                                               );
                                           })}

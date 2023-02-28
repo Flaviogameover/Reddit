@@ -1,12 +1,10 @@
+import { authModalState } from "@/atoms/authModalAtom";
 import {
     Community,
     CommunitySnippet,
     CommunityState,
     communityState,
 } from "@/atoms/communitiesAtom";
-import { useState, useEffect } from "react";
-import { useRecoilState, useSetRecoilState } from "recoil";
-import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, firestore } from "@/firebase/clientApp";
 import {
     collection,
@@ -16,15 +14,14 @@ import {
     increment,
     writeBatch,
 } from "firebase/firestore";
-import { authModalState } from "@/atoms/authModalAtom";
 import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { useRecoilState, useSetRecoilState } from "recoil";
 
 type TUserCommunity = {
     communityStateValue: CommunityState;
-    onJoinLeaveCommunity: (
-        communityData: Community,
-        isJoined: boolean
-    ) => void;
+    onJoinLeaveCommunity: (communityData: Community, isJoined: boolean) => void;
     loading: boolean;
     error: string;
 };
@@ -53,7 +50,6 @@ const useCommunityData = (): TUserCommunity => {
                 mySnippets: snippets as CommunitySnippet[],
                 snippetsFetched: true,
             }));
-
         } catch (error: any) {
             console.log("getMySnippets error", error);
             setError(error.message);

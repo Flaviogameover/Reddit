@@ -18,7 +18,7 @@ const Communities: React.FC<TCommunities> = ({ darkMode }) => {
 
     return (
         <>
-            <CreateCommunityModal darkMode={darkMode}/>
+            <CreateCommunityModal darkMode={darkMode} />
             <Box mt={3} mb={4}>
                 <Text
                     pl={3}

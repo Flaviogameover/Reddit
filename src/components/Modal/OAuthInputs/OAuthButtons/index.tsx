@@ -1,13 +1,13 @@
-import React, { useEffect } from "react";
 import { Button, Flex, Image, Text } from "@chakra-ui/react";
-import {
-    useSignInWithGithub,
-    useSignInWithGoogle,
-} from "react-firebase-hooks/auth";
 import { auth, firestore } from "@firebaseComponent/clientApp";
 import { FIREBASE_ERRORS } from "@firebaseComponent/errors";
 import { User } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
+import React, { useEffect } from "react";
+import {
+    useSignInWithGithub,
+    useSignInWithGoogle,
+} from "react-firebase-hooks/auth";
 
 type TOauthButtons = {
     darkmode: boolean;
@@ -59,7 +59,13 @@ const OAuthButtons: React.FC<TOauthButtons> = ({ darkmode }) => {
                 isLoading={gitLoading}
                 onClick={() => signInWithGithub()}
             >
-                Github
+                <Image
+                    src={`/images/github-mark${darkmode ? "-white" : ""}.png`}
+                    alt="github logo"
+                    height={"20px"}
+                    mr={4}
+                />
+                Continue with Github
             </Button>
             <Text>
                 {

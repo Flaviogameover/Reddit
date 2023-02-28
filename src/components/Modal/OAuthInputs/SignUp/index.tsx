@@ -1,13 +1,13 @@
-import { Text, Flex, Button, Input } from "@chakra-ui/react";
 import { authModalState } from "@/atoms/authModalAtom";
-import React, { useEffect, useState } from "react";
-import { useRecoilValue, useSetRecoilState } from "recoil";
-import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
+import { darkModeState } from "@/atoms/darkmodeAtom";
 import { auth, firestore } from "@/firebase/clientApp";
 import { FIREBASE_ERRORS } from "@/firebase/errors";
-import { addDoc, collection, doc, setDoc, updateDoc } from "firebase/firestore";
+import { Button, Flex, Input, Text } from "@chakra-ui/react";
 import { User } from "firebase/auth";
-import { darkModeState } from "@/atoms/darkmodeAtom";
+import { doc, setDoc } from "firebase/firestore";
+import React, { useEffect, useState } from "react";
+import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 
 type TLogin = {
     email: string;

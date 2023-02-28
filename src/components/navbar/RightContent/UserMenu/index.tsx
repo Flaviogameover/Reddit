@@ -92,9 +92,11 @@ const UserMenu: React.FC<TUserMenu> = ({ user, darkMode }) => {
                             />
                         )}
                     </Flex>
-                    <ChevronDownIcon {...(darkMode && {
-                                            color: "dark_text",
-                                        })} />
+                    <ChevronDownIcon
+                        {...(darkMode && {
+                            color: "dark_text",
+                        })}
+                    />
                 </Flex>
             </MenuButton>
             {user ? (
@@ -110,12 +112,13 @@ const UserMenu: React.FC<TUserMenu> = ({ user, darkMode }) => {
                     <MenuItem
                         fontSize={"10pt"}
                         fontWeight={700}
-                        {
-                            ...darkMode && {
-                                bg: "dark_posts"
-                            }
-                        }
-                        _hover={{ bg: darkMode ? "dark_border" : "blue.500", color: "white" }}
+                        {...(darkMode && {
+                            bg: "dark_posts",
+                        })}
+                        _hover={{
+                            bg: darkMode ? "dark_border" : "blue.500",
+                            color: "white",
+                        }}
                     >
                         <Flex align={"center"}>
                             <Icon fontSize={20} mr={2} as={CgProfile} />
@@ -126,12 +129,13 @@ const UserMenu: React.FC<TUserMenu> = ({ user, darkMode }) => {
                     <MenuItem
                         fontSize={"10pt"}
                         fontWeight={700}
-                        {
-                            ...darkMode && {
-                                bg: "dark_posts"
-                            }
-                        }
-                        _hover={{ bg: darkMode ? "dark_border" : "blue.500", color: "white" }}
+                        {...(darkMode && {
+                            bg: "dark_posts",
+                        })}
+                        _hover={{
+                            bg: darkMode ? "dark_border" : "blue.500",
+                            color: "white",
+                        }}
                         onClick={logout}
                     >
                         <Flex align={"center"}>
@@ -141,26 +145,28 @@ const UserMenu: React.FC<TUserMenu> = ({ user, darkMode }) => {
                     </MenuItem>
                 </MenuList>
             ) : (
-                <MenuList p={1} {
-                    ...darkMode && {
+                <MenuList
+                    p={1}
+                    {...(darkMode && {
                         bg: "dark_posts",
-                        color: "dark_text"
-                    }
-                }>
+                        color: "dark_text",
+                    })}
+                >
                     <MenuItem
                         fontSize={"10pt"}
                         fontWeight={700}
-                        {
-                            ...darkMode && {
-                                bg: "dark_posts",
-                            }
-                        }
-                        _hover={{ bg: darkMode ? "dark_posts_bright" : "blue.500", color: "white" }}
+                        {...(darkMode && {
+                            bg: "dark_posts",
+                        })}
+                        _hover={{
+                            bg: darkMode ? "dark_posts_bright" : "blue.500",
+                            color: "white",
+                        }}
                         onClick={() =>
                             setAuthModalState({ open: true, type: "login" })
                         }
                     >
-                        <Flex align={"center"} >
+                        <Flex align={"center"}>
                             <Icon fontSize={20} mr={2} as={MdOutlineLogin} />
                             Log in / Sign Up
                         </Flex>

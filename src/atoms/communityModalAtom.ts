@@ -1,14 +1,14 @@
-import {atom} from 'recoil';
+import { atom } from "recoil";
 
 export interface CommunityModalState {
     open: boolean;
-};
+}
 
 const defaultModalState: CommunityModalState = {
     open: false,
 };
 
 export const communityModalState = atom<CommunityModalState>({
-    key: 'communityModal',
+    key: "communityModal",
     default: defaultModalState,
 });

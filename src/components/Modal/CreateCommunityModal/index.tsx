@@ -28,7 +28,7 @@ import {
     serverTimestamp,
     updateDoc,
 } from "firebase/firestore";
-import { uploadString, getDownloadURL, ref } from "firebase/storage";
+import { getDownloadURL, ref, uploadString } from "firebase/storage";
 import { useRouter } from "next/router";
 import React, { ChangeEvent, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";

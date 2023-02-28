@@ -1,3 +1,4 @@
+import { darkModeState } from "@/atoms/darkmodeAtom";
 import { CloseIcon, SearchIcon } from "@chakra-ui/icons";
 import {
     Flex,
@@ -7,9 +8,8 @@ import {
     InputRightElement,
 } from "@chakra-ui/react";
 import { User } from "firebase/auth";
-import React from "react";
 import { useRouter } from "next/router";
-import { darkModeState } from "@/atoms/darkmodeAtom";
+import React from "react";
 import { useRecoilValue } from "recoil";
 
 type TSearch = {
@@ -18,7 +18,7 @@ type TSearch = {
 
 const SearchInput: React.FC<TSearch> = ({ user }) => {
     const [search, setSearch] = React.useState<string>("");
-    const {darkMode} = useRecoilValue(darkModeState);
+    const { darkMode } = useRecoilValue(darkModeState);
     const router = useRouter();
     return (
         <Flex
@@ -32,18 +32,12 @@ const SearchInput: React.FC<TSearch> = ({ user }) => {
             <InputGroup outline={"none"}>
                 <InputLeftElement
                     cursor={"pointer"}
-                    onClick={() =>
-                        {
-                            search && router.push(`/search?q=${search}&type=posts`);
-                        }
-                    }
+                    onClick={() => {
+                        search && router.push(`/search?q=${search}&type=posts`);
+                    }}
                     children={
                         <SearchIcon
-                            color={
-                                darkMode
-                                    ? "dark_text"
-                                    : "gray.400"
-                            }
+                            color={darkMode ? "dark_text" : "gray.400"}
                             _hover={{
                                 color: darkMode
                                     ? "dark_border_hover"
@@ -57,20 +51,12 @@ const SearchInput: React.FC<TSearch> = ({ user }) => {
                     placeholder="Search Reddit"
                     fontSize={"10pt"}
                     _placeholder={{
-                        color: darkMode
-                            ? "dark_text"
-                            : "gray.500",
+                        color: darkMode ? "dark_text" : "gray.500",
                     }}
-                    bg={
-                        darkMode
-                            ? "dark_posts_bright"
-                            : "gray.50"
-                    }
+                    bg={darkMode ? "dark_posts_bright" : "gray.50"}
                     color={darkMode ? "dark_text" : "gray.500"}
                     border={"1px solid"}
-                    borderColor={
-                        darkMode ? "dark_border" : "gray.300"
-                    }
+                    borderColor={darkMode ? "dark_border" : "gray.300"}
                     _hover={{
                         border: "1px solid",
                         borderColor: darkMode
@@ -79,15 +65,11 @@ const SearchInput: React.FC<TSearch> = ({ user }) => {
                     }}
                     _focus={{
                         border: "1px solid",
-                        borderColor: darkMode
-                            ? "dark_text"
-                            : "blue.500",
+                        borderColor: darkMode ? "dark_text" : "blue.500",
                     }}
                     _focusVisible={{
                         border: "1px solid",
-                        borderColor: darkMode
-                            ? "dark_text"
-                            : "blue.500",
+                        borderColor: darkMode ? "dark_text" : "blue.500",
                     }}
                     height={"34px"}
                     onChange={(e) => setSearch(e.target.value)}
@@ -104,11 +86,7 @@ const SearchInput: React.FC<TSearch> = ({ user }) => {
                         onClick={() => setSearch("")}
                         children={
                             <CloseIcon
-                                color={
-                                    darkMode
-                                        ? "dark_text"
-                                        : "gray.400"
-                                }
+                                color={darkMode ? "dark_text" : "gray.400"}
                                 _hover={{
                                     color: darkMode
                                         ? "dark_border_hover"

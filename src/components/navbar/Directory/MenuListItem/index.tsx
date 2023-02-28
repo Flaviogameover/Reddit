@@ -1,9 +1,9 @@
+import { darkModeState } from "@/atoms/darkmodeAtom";
 import { TDirectoryMenu } from "@/atoms/directoryMenuAtom";
+import useDirectory from "@/hooks/useDirectory";
 import { Flex, Icon, Image, MenuItem } from "@chakra-ui/react";
 import React from "react";
-import useDirectory from "@/hooks/useDirectory";
-import { darkModeState } from "@/atoms/darkmodeAtom";
-import { useRecoilValue } from 'recoil';
+import { useRecoilValue } from "recoil";
 
 const MenuListItem: React.FC<TDirectoryMenu> = ({
     displayText,
@@ -13,18 +13,16 @@ const MenuListItem: React.FC<TDirectoryMenu> = ({
     imageURL,
 }) => {
     const { onSelectMenuItem } = useDirectory();
-    const {darkMode} = useRecoilValue(darkModeState);
+    const { darkMode } = useRecoilValue(darkModeState);
     return (
         <MenuItem
             width={"100%"}
             fontSize={"10pt"}
             _hover={{ bg: darkMode ? "dark_border" : "gray.100" }}
-            {
-                ...darkMode && {
-                    color: "dark_text",
-                    bg: "dark_posts"
-                }
-            }
+            {...(darkMode && {
+                color: "dark_text",
+                bg: "dark_posts",
+            })}
             onClick={() =>
                 onSelectMenuItem({
                     displayText,

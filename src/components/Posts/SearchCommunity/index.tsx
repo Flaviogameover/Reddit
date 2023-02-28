@@ -11,9 +11,13 @@ type TSearchCommunity = {
     darkMode: boolean;
 };
 
-const SearchCommunity: React.FC<TSearchCommunity> = ({ searchResult, isJoined, darkMode }) => {
+const SearchCommunity: React.FC<TSearchCommunity> = ({
+    searchResult,
+    isJoined,
+    darkMode,
+}) => {
     const router = useRouter();
-    const {onJoinLeaveCommunity} = useCommunityData();
+    const { onJoinLeaveCommunity } = useCommunityData();
 
     const handleClickCommunity = (e: React.MouseEvent<HTMLDivElement>) => {
         e.stopPropagation();
@@ -51,23 +55,27 @@ const SearchCommunity: React.FC<TSearchCommunity> = ({ searchResult, isJoined, d
                         borderRadius={"full"}
                     />
                 ) : (
-                    <Icon as={FaReddit} boxSize={"35px"} bg={"white"} borderRadius={"full"} color={
-                        darkMode
-                            ? "brand.100"
-                            : "blue.100"
-                    }/>
-                )
-            
-            }
-                <Text fontSize={"9pt"} pl={2} fontWeight={700}
-                                color={darkMode ? "dark_text" : "gray.500"}
-                                _hover={{ textDecoration: "underline" }}
+                    <Icon
+                        as={FaReddit}
+                        boxSize={"35px"}
+                        bg={"white"}
+                        borderRadius={"full"}
+                        color={darkMode ? "brand.100" : "blue.100"}
+                    />
+                )}
+                <Text
+                    fontSize={"9pt"}
+                    pl={2}
+                    fontWeight={700}
+                    color={darkMode ? "dark_text" : "gray.500"}
+                    _hover={{ textDecoration: "underline" }}
                 >
                     {`r/${searchResult.id}`}
                 </Text>
-                <Text fontSize={"9pt"} pl={2} 
-                
-                color={darkMode ? "dark_text" : "gray.500"}
+                <Text
+                    fontSize={"9pt"}
+                    pl={2}
+                    color={darkMode ? "dark_text" : "gray.500"}
                 >
                     {`${searchResult.numberOfMembers} members`}
                 </Text>
@@ -75,13 +83,17 @@ const SearchCommunity: React.FC<TSearchCommunity> = ({ searchResult, isJoined, d
             <Button
                 height="22px"
                 fontSize="8pt"
-                onClick={(
-                    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
-                ) => handleJoinLeaveCommunity(e, isJoined)}
+                onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) =>
+                    handleJoinLeaveCommunity(e, isJoined)
+                }
                 variant={
                     isJoined
-                        ? darkMode ? "dark" :"outline"
-                        : darkMode ? "dark_selected": "solid"
+                        ? darkMode
+                            ? "dark"
+                            : "outline"
+                        : darkMode
+                        ? "dark_selected"
+                        : "solid"
                 }
             >
                 {isJoined ? "Joined" : "Join"}

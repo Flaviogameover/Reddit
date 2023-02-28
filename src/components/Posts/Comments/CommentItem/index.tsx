@@ -79,11 +79,9 @@ const CommentItem: React.FC<TCommentItem> = ({
                                 _hover={{
                                     color: "blue.500",
                                 }}
-                                {
-                                    ...darkMode && {
-                                        color: "dark_text",
-                                    }
-                                }
+                                {...(darkMode && {
+                                    color: "dark_text",
+                                })}
                             >
                                 Edit
                             </Text>

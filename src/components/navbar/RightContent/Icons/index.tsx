@@ -1,7 +1,6 @@
 import { Flex, Icon } from "@chakra-ui/react";
 import React from "react";
 import { BsArrowUpCircle, BsChatDots } from "react-icons/bs";
-import { GrAdd } from "react-icons/gr";
 import {
     IoFilterCircleOutline,
     IoNotificationsOutline,
@@ -12,9 +11,7 @@ type TIcons = {
     darkMode: boolean;
 };
 
-const Icons: React.FC<TIcons> = ({
-    darkMode,
-}) => {
+const Icons: React.FC<TIcons> = ({ darkMode }) => {
     return (
         <Flex>
             <Flex
@@ -30,9 +27,7 @@ const Icons: React.FC<TIcons> = ({
                     cursor={"pointer"}
                     borderRadius={4}
                     color={darkMode ? "dark_text" : "gray.500"}
-                    _hover={{ bg: 
-                        darkMode ? "dark_border" : "gray.200"
-                    }}
+                    _hover={{ bg: darkMode ? "dark_border" : "gray.200" }}
                 >
                     <Icon as={BsArrowUpCircle} fontSize={20} />
                 </Flex>
@@ -43,9 +38,7 @@ const Icons: React.FC<TIcons> = ({
                     cursor={"pointer"}
                     borderRadius={4}
                     color={darkMode ? "dark_text" : "gray.500"}
-                    _hover={{ bg: 
-                        darkMode ? "dark_border" : "gray.200"
-                    }}
+                    _hover={{ bg: darkMode ? "dark_border" : "gray.200" }}
                 >
                     <Icon as={IoFilterCircleOutline} fontSize={22} />
                 </Flex>
@@ -56,9 +49,7 @@ const Icons: React.FC<TIcons> = ({
                     cursor={"pointer"}
                     borderRadius={4}
                     color={darkMode ? "dark_text" : "gray.500"}
-                    _hover={{ bg: 
-                        darkMode ? "dark_border" : "gray.200"
-                    }}
+                    _hover={{ bg: darkMode ? "dark_border" : "gray.200" }}
                 >
                     <Icon as={IoVideocamOutline} fontSize={22} />
                 </Flex>
@@ -71,9 +62,7 @@ const Icons: React.FC<TIcons> = ({
                     cursor={"pointer"}
                     borderRadius={4}
                     color={darkMode ? "dark_text" : "gray.500"}
-                    _hover={{ bg: 
-                        darkMode ? "dark_border" : "gray.200"
-                    }}
+                    _hover={{ bg: darkMode ? "dark_border" : "gray.200" }}
                 >
                     <Icon as={BsChatDots} fontSize={20} />
                 </Flex>
@@ -84,9 +73,7 @@ const Icons: React.FC<TIcons> = ({
                     cursor={"pointer"}
                     borderRadius={4}
                     color={darkMode ? "dark_text" : "gray.500"}
-                    _hover={{ bg: 
-                        darkMode ? "dark_border" : "gray.200"
-                    }}
+                    _hover={{ bg: darkMode ? "dark_border" : "gray.200" }}
                 >
                     <Icon as={IoNotificationsOutline} fontSize={20} />
                 </Flex>

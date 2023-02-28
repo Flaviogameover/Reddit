@@ -10,14 +10,14 @@ export interface Community {
     imageURL?: string;
     banner?: string;
 }
- 
-export interface CommunitySnippet{
+
+export interface CommunitySnippet {
     communityId: string;
     isModerator?: boolean;
     imageURL?: string;
 }
 
-export interface CommunityState{
+export interface CommunityState {
     mySnippets: CommunitySnippet[];
     currentCommunity?: Community;
     snippetsFetched: boolean;

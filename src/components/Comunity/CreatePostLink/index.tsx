@@ -14,13 +14,11 @@ type TCreatePostLink = {
     darkMode: boolean;
 };
 
-const CreatePostLink: React.FC<TCreatePostLink> = ({
-    darkMode,
-}) => {
+const CreatePostLink: React.FC<TCreatePostLink> = ({ darkMode }) => {
     const router = useRouter();
     const [user] = useAuthState(auth);
     const setAuthModalState = useSetRecoilState(authModalState);
-    const {toggleMenuOpen} = useDirectory();
+    const { toggleMenuOpen } = useDirectory();
     const onClick = () => {
         if (!user) {
             setAuthModalState({
@@ -31,7 +29,7 @@ const CreatePostLink: React.FC<TCreatePostLink> = ({
         }
 
         const { communityId } = router.query;
-        if(communityId) {
+        if (communityId) {
             router.push(`/r/${communityId}/submit`);
             return;
         }
@@ -46,52 +44,34 @@ const CreatePostLink: React.FC<TCreatePostLink> = ({
             height={"56px"}
             borderRadius={4}
             border={"1px solid"}
-            {
-                ...darkMode &&{
-                    borderColor: "dark_border_hover"
-                }
-                    
-            }
+            {...(darkMode && {
+                borderColor: "dark_border_hover",
+            })}
             p={2}
             mb={4}
-            
         >
             <Icon as={FaReddit} fontSize={36} color={"gray.300"} mr={4} />
             <Input
                 placeholder={"Create Post"}
                 fontSize={"10pt"}
                 _placeholder={{
-                    color: darkMode
-                        ? "dark_text"
-                        : "gray.500",
+                    color: darkMode ? "dark_text" : "gray.500",
                 }}
-                bg={
-                    darkMode
-                        ? "dark_posts_bright"
-                        : "gray.50"
-                }
+                bg={darkMode ? "dark_posts_bright" : "gray.50"}
                 color={darkMode ? "dark_text" : "gray.500"}
                 border={"1px solid"}
-                borderColor={
-                    darkMode ? "dark_border" : "gray.200"
-                }
+                borderColor={darkMode ? "dark_border" : "gray.200"}
                 _hover={{
                     border: "1px solid",
-                    borderColor: darkMode
-                        ? "dark_border_hover"
-                        : "blue.500",
+                    borderColor: darkMode ? "dark_border_hover" : "blue.500",
                 }}
                 _focus={{
                     border: "1px solid",
-                    borderColor: darkMode
-                        ? "dark_text"
-                        : "blue.500",
+                    borderColor: darkMode ? "dark_text" : "blue.500",
                 }}
                 _focusVisible={{
                     border: "1px solid",
-                    borderColor: darkMode
-                        ? "dark_text"
-                        : "blue.500",
+                    borderColor: darkMode ? "dark_text" : "blue.500",
                 }}
                 height={"36px"}
                 borderRadius={4}

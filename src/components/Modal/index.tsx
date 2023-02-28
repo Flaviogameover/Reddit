@@ -1,6 +1,5 @@
 import { authModalState } from "@/atoms/authModalAtom";
-import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
-import React, { useEffect } from "react";
+import { darkModeState } from "@/atoms/darkmodeAtom";
 import {
     Flex,
     Modal,
@@ -11,19 +10,20 @@ import {
     ModalOverlay,
     Text,
 } from "@chakra-ui/react";
+import { auth } from "@firebaseComponent/clientApp";
 import OAuthInputs from "@modal/OAuthInputs";
 import OAuthButtons from "@modal/OAuthInputs/OAuthButtons";
 import ResetPassword from "@modal/OAuthInputs/ResetPassword";
-import { auth } from "@firebaseComponent/clientApp";
+import React, { useEffect } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { darkModeState } from "@/atoms/darkmodeAtom";
-import useDarkMode from './../../hooks/useDarkMode';
+import { useRecoilState, useRecoilValue } from "recoil";
+import useDarkMode from "./../../hooks/useDarkMode";
 
 const OAuthModal: React.FC = () => {
     const [modalState, setModalState] = useRecoilState(authModalState);
     const [user, loading, error] = useAuthState(auth);
     const { darkMode } = useRecoilValue(darkModeState);
-    const {loadDarkMode} = useDarkMode();
+    const { loadDarkMode } = useDarkMode();
 
     const handleClose = () => {
         setModalState((prev) => ({

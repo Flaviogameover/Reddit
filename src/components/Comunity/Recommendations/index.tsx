@@ -22,8 +22,8 @@ import {
 } from "firebase/firestore";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
-import { FaReddit } from "react-icons/fa";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { FaReddit } from "react-icons/fa";
 
 type TRecommendations = {
     darkMode: boolean;
@@ -32,8 +32,8 @@ type TRecommendations = {
 const Recommendations: React.FC<TRecommendations> = ({ darkMode }) => {
     const [user] = useAuthState(auth);
     const [communities, setCommunities] = useState<Community[]>([]);
-    const [loading, setLoading] = useState<boolean>(false);
-    const { communityStateValue, onJoinLeaveCommunity } = useCommunityData();
+    const [loadingCommunities, setLoading] = useState<boolean>(false);
+    const { communityStateValue, onJoinLeaveCommunity, loading } = useCommunityData();
     const router = useRouter();
 
     const getCommunityRecommendations = async () => {
@@ -105,7 +105,7 @@ const Recommendations: React.FC<TRecommendations> = ({ darkMode }) => {
                 Top Communities
             </Flex>
             <Flex direction={"column"}>
-                {loading ? (
+                {loadingCommunities ? (
                     <Stack mt={2} p={3}>
                         <Flex justify={"space-between"} align={"center"}>
                             <SkeletonCircle size={"10"} />
@@ -156,11 +156,13 @@ const Recommendations: React.FC<TRecommendations> = ({ darkMode }) => {
                                                     {index + 1}
                                                 </Text>
                                             </Flex>
-                                            <Flex align="center" width="80%" {
-                                                ...darkMode && {
+                                            <Flex
+                                                align="center"
+                                                width="80%"
+                                                {...(darkMode && {
                                                     color: "dark_text",
-                                                }
-                                            }>
+                                                })}
+                                            >
                                                 {item.imageURL ? (
                                                     <Image
                                                         borderRadius="full"
@@ -184,7 +186,6 @@ const Recommendations: React.FC<TRecommendations> = ({ darkMode }) => {
                                                         overflow: "hidden",
                                                         textOverflow:
                                                             "ellipsis",
-                                                      
                                                     }}
                                                 >{`r/${item.id}`}</span>
                                             </Flex>
@@ -214,6 +215,7 @@ const Recommendations: React.FC<TRecommendations> = ({ darkMode }) => {
                                                         ? "dark_selected"
                                                         : "solid"
                                                 }
+                                                isLoading={loading}
                                             >
                                                 {isJoined ? "Joined" : "Join"}
                                             </Button>

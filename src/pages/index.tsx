@@ -10,14 +10,13 @@ import PostLoader from "@/components/Posts/PostLoader";
 import { auth, firestore } from "@/firebase/clientApp";
 import useCommunityData from "@/hooks/useCommunityData";
 import usePosts from "@/hooks/usePosts";
-import { Button, Stack } from "@chakra-ui/react";
+import { Button, Stack, Text } from "@chakra-ui/react";
 import {
     collection,
     getDocs,
     limit,
     orderBy,
     query,
-    startAfter,
     where,
 } from "firebase/firestore";
 import { NextPage } from "next";
@@ -76,10 +75,6 @@ const Home: NextPage = () => {
         }
         setLoading(false);
     };
-
-    useEffect(() => {
-        console.log(page);
-    }, [page]);
 
     const buildNoUserHomeFeed = async () => {
         setLoading(true);
@@ -211,6 +206,15 @@ const Home: NextPage = () => {
                 <CreatePostLink darkMode={darkMode} />
                 {loading ? (
                     <PostLoader darkMode={darkMode} />
+                ) : !postStateValue.posts.length ? (
+                    <Text
+                        fontSize={"xl"}
+                        align="center"
+                        fontWeight={700}
+                        color={darkMode ? "dark_text" : "gray.500"}
+                    >
+                        No posts yet
+                    </Text>
                 ) : (
                     <Stack>
                         <>

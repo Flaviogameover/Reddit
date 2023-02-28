@@ -5,9 +5,9 @@ import React from "react";
 import { FaReddit } from "react-icons/fa";
 import { useSetRecoilState } from "recoil";
 
-type TPersonalHome = {darkMode: boolean;};
+type TPersonalHome = { darkMode: boolean };
 
-const PersonalHome: React.FC<TPersonalHome> = ({darkMode}) => {
+const PersonalHome: React.FC<TPersonalHome> = ({ darkMode }) => {
     const setDirectoryState = useSetRecoilState(directoryMenuState);
     const setCommunityModal = useSetRecoilState(communityModalState);
 
@@ -48,22 +48,35 @@ const PersonalHome: React.FC<TPersonalHome> = ({darkMode}) => {
                         as={FaReddit}
                         fontSize={50}
                         color="brand.100"
-                    bg={"white"} borderRadius={"full"}
-                    mr={2}
+                        bg={"white"}
+                        borderRadius={"full"}
+                        mr={2}
                     />
-                    <Text {...(darkMode && {
+                    <Text
+                        {...(darkMode && {
                             color: "dark_text",
-                        })} fontWeight={600}>Home</Text>
+                        })}
+                        fontWeight={600}
+                    >
+                        Home
+                    </Text>
                 </Flex>
                 <Stack spacing={3}>
-                    <Text {...(darkMode && {
+                    <Text
+                        {...(darkMode && {
                             color: "dark_text",
-                        })} fontSize="9pt">
+                        })}
+                        fontSize="9pt"
+                    >
                         Your personal Reddit frontpage, built for you.
                     </Text>
-                    <Button onClick={handleClickPersonalPost} height="30px" {...(darkMode && {
+                    <Button
+                        onClick={handleClickPersonalPost}
+                        height="30px"
+                        {...(darkMode && {
                             variant: "dark_selected",
-                        })}>
+                        })}
+                    >
                         Create Post
                     </Button>
                     <Button

@@ -1,15 +1,9 @@
-import React, { useState } from "react";
-import { IconType } from "react-icons";
-import { BsLink45Deg, BsMic } from "react-icons/bs";
-import { IoDocumentText, IoImageOutline } from "react-icons/io5";
-import { BiPoll } from "react-icons/bi";
-import { Alert, AlertIcon, Flex, Text } from "@chakra-ui/react";
-import TabItem from "../TabItem";
-import TextInputs from "../PostForm";
-import ImageUpload from "./../ImageUpload/index";
-import { User } from "firebase/auth";
-import { useRouter } from "next/router";
+import { darkModeState } from "@/atoms/darkmodeAtom";
 import { Post } from "@/atoms/postsAtom";
+import { firestore, storage } from "@/firebase/clientApp";
+import useSelectFile from "@/hooks/useSelectFile";
+import { Alert, AlertIcon, Flex, Text } from "@chakra-ui/react";
+import { User } from "firebase/auth";
 import {
     addDoc,
     collection,
@@ -19,11 +13,17 @@ import {
     Timestamp,
     updateDoc,
 } from "firebase/firestore";
-import { firestore, storage } from "@/firebase/clientApp";
 import { getDownloadURL, ref, uploadString } from "firebase/storage";
-import useSelectFile from '@/hooks/useSelectFile';
-import { useRecoilValue } from 'recoil';
-import { darkModeState } from "@/atoms/darkmodeAtom";
+import { useRouter } from "next/router";
+import React, { useState } from "react";
+import { IconType } from "react-icons";
+import { BiPoll } from "react-icons/bi";
+import { BsLink45Deg, BsMic } from "react-icons/bs";
+import { IoDocumentText, IoImageOutline } from "react-icons/io5";
+import { useRecoilValue } from "recoil";
+import TextInputs from "../PostForm";
+import TabItem from "../TabItem";
+import ImageUpload from "./../ImageUpload/index";
 
 export type TFormTabs = {
     title: "Post" | "Images & Videos" | "Link" | "Poll" | "Talk";
@@ -60,7 +60,7 @@ type TNewPostForm = {
 
 const NewPostForm: React.FC<TNewPostForm> = ({ user, communityImageURL }) => {
     const router = useRouter();
-    const {darkMode} = useRecoilValue(darkModeState);
+    const { darkMode } = useRecoilValue(darkModeState);
     const [selectedForm, setSelectedForm] = useState(formTabs[0].title);
     const [textInputs, setTextInputs] = useState({
         title: "",
@@ -87,15 +87,16 @@ const NewPostForm: React.FC<TNewPostForm> = ({ user, communityImageURL }) => {
 
         setLoading(true);
         try {
-            const communityDocRef = doc(firestore, "communities", communityId as string);
-            const communityDoc = await getDoc(communityDocRef);
-            const postDocRef = await addDoc(
-                collection(firestore, "posts"),
-                {
-                    ...newPost,
-                    privacyType: communityDoc.data()!.privacyType,
-                } as Post,
+            const communityDocRef = doc(
+                firestore,
+                "communities",
+                communityId as string
             );
+            const communityDoc = await getDoc(communityDocRef);
+            const postDocRef = await addDoc(collection(firestore, "posts"), {
+                ...newPost,
+                privacyType: communityDoc.data()!.privacyType,
+            } as Post);
 
             if (selectedFile) {
                 const imageRef = ref(storage, `posts/${postDocRef.id}/image`);
@@ -107,26 +108,25 @@ const NewPostForm: React.FC<TNewPostForm> = ({ user, communityImageURL }) => {
                 });
             }
             router.back();
-        } catch (e:any) {
+        } catch (e: any) {
             console.log("handleCreatePost error: ", e);
             setError(e.message);
         }
         setLoading(false);
     };
 
-
-
     //const onTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {};
     return (
-        <Flex direction={"column"} bg={darkMode ? "dark_posts" : "white"} 
-        {
-            ...darkMode && {
+        <Flex
+            direction={"column"}
+            bg={darkMode ? "dark_posts" : "white"}
+            {...(darkMode && {
                 border: "1px solid",
-                borderColor: "dark_border_hover"
-            }
-        }
-
-        borderRadius={4} mt={2}>
+                borderColor: "dark_border_hover",
+            })}
+            borderRadius={4}
+            mt={2}
+        >
             <Flex width={"100%"}>
                 {formTabs.map((item) => (
                     <TabItem

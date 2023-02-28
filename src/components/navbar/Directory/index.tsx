@@ -2,10 +2,12 @@ import useDirectory from "@/hooks/useDirectory";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import {
     Flex,
-    Icon, Image, Menu,
+    Icon,
+    Image,
+    Menu,
     MenuButton,
     MenuList,
-    Text
+    Text,
 } from "@chakra-ui/react";
 import Communities from "@navbar/Directory/Communities";
 import React from "react";
@@ -14,7 +16,7 @@ type TDirectory = {
     darkMode: boolean;
 };
 
-const Directory: React.FC<TDirectory> = ({darkMode}) => {
+const Directory: React.FC<TDirectory> = ({ darkMode }) => {
     const { directoryState, toggleMenuOpen } = useDirectory();
     return (
         <Menu isOpen={directoryState.isOpen}>
@@ -25,13 +27,9 @@ const Directory: React.FC<TDirectory> = ({darkMode}) => {
                 borderRadius={4}
                 mr={2}
                 ml={{ base: 0, md: 2 }}
-                {
-                    ...darkMode && (
-                        {
-                            color: "dark_text",
-                        }
-                    )
-                }
+                {...(darkMode && {
+                    color: "dark_text",
+                })}
                 _hover={{
                     outline: "1px solid",
                     outlineColor: darkMode ? "dark_border_hover" : "gray.200",
@@ -53,8 +51,10 @@ const Directory: React.FC<TDirectory> = ({darkMode}) => {
                                 mr={{ base: 1, md: 2 }}
                                 as={directoryState.selectedMenuItem.icon}
                                 color={
-                                    darkMode ? "dark_text" :
-                                    directoryState.selectedMenuItem.iconColor
+                                    darkMode
+                                        ? "dark_text"
+                                        : directoryState.selectedMenuItem
+                                              .iconColor
                                 }
                             />
                         )}
@@ -68,11 +68,9 @@ const Directory: React.FC<TDirectory> = ({darkMode}) => {
                 </Flex>
             </MenuButton>
             <MenuList
-                 {
-                    ...darkMode && {
-                        bg: "dark_posts"
-                    }
-                }
+                {...(darkMode && {
+                    bg: "dark_posts",
+                })}
             >
                 <Communities darkMode={darkMode} />
             </MenuList>

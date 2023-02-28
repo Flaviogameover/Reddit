@@ -1,16 +1,15 @@
 import { darkModeState } from "@/atoms/darkmodeAtom";
 import { auth, firestore } from "@/firebase/clientApp";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
-import { useSetRecoilState } from "recoil";
 import { useAuthState } from "react-firebase-hooks/auth";
-
+import { useSetRecoilState } from "recoil";
 
 type TUseDarkMode = () => {
-    loadDarkMode: ()=>void;
-    toggleDarkMode: (darkMode: boolean)=>void;
+    loadDarkMode: () => void;
+    toggleDarkMode: (darkMode: boolean) => void;
 };
-    
-const useDarkMode:TUseDarkMode = () => {
+
+const useDarkMode: TUseDarkMode = () => {
     const setDarkMode = useSetRecoilState(darkModeState);
     const [user] = useAuthState(auth);
 
@@ -24,7 +23,7 @@ const useDarkMode:TUseDarkMode = () => {
         }
     };
 
-    const toggleDarkMode = async (darkMode:boolean) => {
+    const toggleDarkMode = async (darkMode: boolean) => {
         try {
             const userDocRef = doc(firestore, "users", user!.uid);
             await updateDoc(userDocRef, {
@@ -34,7 +33,7 @@ const useDarkMode:TUseDarkMode = () => {
         } catch (e: any) {
             console.log("Load user dark mode", e.message);
         }
-    }
+    };
 
     return {
         loadDarkMode,

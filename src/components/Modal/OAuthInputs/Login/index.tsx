@@ -1,11 +1,11 @@
 import { authModalState } from "@/atoms/authModalAtom";
-import { auth } from "@/firebase/clientApp";
-import { Button, Flex, Input, Text } from "@chakra-ui/react";
-import React, { useEffect, useState } from "react";
-import { useRecoilValue, useSetRecoilState } from "recoil";
-import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
-import { FIREBASE_ERRORS } from "@/firebase/errors";
 import { darkModeState } from "@/atoms/darkmodeAtom";
+import { auth } from "@/firebase/clientApp";
+import { FIREBASE_ERRORS } from "@/firebase/errors";
+import { Button, Flex, Input, Text } from "@chakra-ui/react";
+import React, { useState } from "react";
+import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 
 type TLogin = {
     email: string;
@@ -34,11 +34,6 @@ const Login: React.FC = () => {
         });
     };
 
-    useEffect(()=>{
-        console.log("user Cred aqui", userCred);
-        
-    },[userCred])
-    
     return (
         <form onSubmit={handleSubmit}>
             <Input

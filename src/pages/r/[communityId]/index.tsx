@@ -1,4 +1,6 @@
 import { Community, communityState } from "@/atoms/communitiesAtom";
+import { darkModeState } from "@/atoms/darkmodeAtom";
+import About from "@/components/Comunity/About/index";
 import CreatePostLink from "@/components/Comunity/CreatePostLink";
 import Header from "@/components/Comunity/Header";
 import CommunityNotFound from "@/components/Comunity/NotFound";
@@ -8,11 +10,9 @@ import { firestore } from "@/firebase/clientApp";
 import { doc, getDoc } from "firebase/firestore";
 import { GetServerSidePropsContext } from "next";
 import { NextPage } from "next/types";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import safeJsonStringfy from "safe-json-stringify";
-import About from "@/components/Comunity/About/index";
-import { darkModeState } from "@/atoms/darkmodeAtom";
 
 type TCommunityPage = {
     communityData: Community;
@@ -20,8 +20,8 @@ type TCommunityPage = {
 
 const CommunityId: NextPage<TCommunityPage> = ({ communityData }) => {
     const setCommunityStateValue = useSetRecoilState(communityState);
-    const {darkMode} = useRecoilValue(darkModeState);
-    if (!communityData) return <CommunityNotFound darkMode={darkMode}/>;
+    const { darkMode } = useRecoilValue(darkModeState);
+    if (!communityData) return <CommunityNotFound darkMode={darkMode} />;
 
     useEffect(() => {
         setCommunityStateValue((prev) => ({
@@ -35,8 +35,8 @@ const CommunityId: NextPage<TCommunityPage> = ({ communityData }) => {
             <Header communityData={communityData} darkMode={darkMode} />
             <PageContent>
                 <>
-                    <CreatePostLink darkMode={darkMode}/>
-                    <Posts communityData={communityData} darkMode={darkMode}/>
+                    <CreatePostLink darkMode={darkMode} />
+                    <Posts communityData={communityData} darkMode={darkMode} />
                 </>
                 <>
                     <About communityData={communityData} />
@@ -55,7 +55,6 @@ const getServerSideProps = async (context: GetServerSidePropsContext) => {
         );
 
         const communityDoc = await getDoc(communityDocRef);
-        console.log("communityDoc", communityDoc.data());
         return {
             props: {
                 communityData: communityDoc.exists()

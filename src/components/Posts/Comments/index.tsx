@@ -30,10 +30,15 @@ type TComments = {
     user: User;
     selectedPost: Post | null;
     communityId: string;
-    darkMode:boolean;
+    darkMode: boolean;
 };
 
-const Comments: React.FC<TComments> = ({ user, selectedPost, communityId, darkMode }) => {
+const Comments: React.FC<TComments> = ({
+    user,
+    selectedPost,
+    communityId,
+    darkMode,
+}) => {
     const [commentText, setCommentText] = useState<string>("");
     const [comments, setComments] = useState<TComment[]>([]);
     const [fetchLoading, setFetchLoading] = useState<boolean>(true);
@@ -142,11 +147,11 @@ const Comments: React.FC<TComments> = ({ user, selectedPost, communityId, darkMo
         getPostComments();
     }, [selectedPost]);
     return (
-        <Box bg={
-            darkMode ? "dark_posts_dark" : "white"
-        } 
-        
-        borderRadius={"0 0 4px 4px"} p={2}>
+        <Box
+            bg={darkMode ? "dark_posts_dark" : "white"}
+            borderRadius={"0 0 4px 4px"}
+            p={2}
+        >
             <Flex
                 direction={"column"}
                 pl={10}
@@ -168,9 +173,11 @@ const Comments: React.FC<TComments> = ({ user, selectedPost, communityId, darkMo
                 {fetchLoading ? (
                     <>
                         {[0, 1, 2].map((i) => (
-                            <Box key={i} padding={"6px"} bg={
-                                darkMode ? "dark_posts_dark" : "white"
-                            }>
+                            <Box
+                                key={i}
+                                padding={"6px"}
+                                bg={darkMode ? "dark_posts_dark" : "white"}
+                            >
                                 <SkeletonCircle size={"10"} />
                                 <SkeletonText
                                     mt={4}
@@ -191,11 +198,11 @@ const Comments: React.FC<TComments> = ({ user, selectedPost, communityId, darkMo
                                 borderColor={"gray.100"}
                                 p={20}
                             >
-                                <Text 
-                                    {
-                                        ...darkMode && {color:"dark_text"}
-                                    }
-                                fontWeight={700} opacity={0.3}>
+                                <Text
+                                    {...(darkMode && { color: "dark_text" })}
+                                    fontWeight={700}
+                                    opacity={0.3}
+                                >
                                     No comments yet
                                 </Text>
                             </Flex>

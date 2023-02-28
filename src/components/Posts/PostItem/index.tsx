@@ -1,19 +1,22 @@
 import { Post } from "@/atoms/postsAtom";
 import {
-    Flex,
-    Icon,
-    Stack,
-    Text,
-    Image,
-    Skeleton,
-    Spinner,
     Alert,
     AlertIcon,
+    Flex,
+    Icon,
+    Image,
     Link,
+    Skeleton,
+    Spinner,
+    Stack,
+    Text,
 } from "@chakra-ui/react";
 import moment from "moment";
+import { useRouter } from "next/router";
 import React, { useState } from "react";
+import { AiOutlineDelete } from "react-icons/ai";
 import { BsChat, BsDot } from "react-icons/bs";
+import { FaReddit } from "react-icons/fa";
 import {
     IoArrowDownCircleOutline,
     IoArrowDownCircleSharp,
@@ -21,9 +24,6 @@ import {
     IoArrowUpCircleOutline,
     IoArrowUpCircleSharp,
 } from "react-icons/io5";
-import { AiOutlineDelete } from "react-icons/ai";
-import { useRouter } from "next/router";
-import { FaReddit } from "react-icons/fa";
 
 type TPostItem = {
     post: Post;
@@ -77,7 +77,7 @@ const PostItem: React.FC<TPostItem> = ({
 
     return (
         <Flex
-        bg={darkMode ? "dark_posts" : "white"}
+            bg={darkMode ? "dark_posts" : "white"}
             border={"1px solid"}
             borderColor={
                 darkMode
@@ -169,8 +169,11 @@ const PostItem: React.FC<TPostItem> = ({
                                         as={FaReddit}
                                         fontSize={"18pt"}
                                         mr={1}
-                                        bg={"white"} borderRadius={"full"}
-                                        color={darkMode ? "brand.100" : "blue.500"}
+                                        bg={"white"}
+                                        borderRadius={"full"}
+                                        color={
+                                            darkMode ? "brand.100" : "blue.500"
+                                        }
                                     />
                                 )}
                                 <Link href={`/r/${post.communityId}`}>

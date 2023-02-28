@@ -1,7 +1,10 @@
 import React, { useState } from "react";
+import { useRouter } from "next/router";
 
 const useSelectFile = () => {
     const [selectedFile, setSelectedFile] = useState<string>();
+    const router = useRouter();
+    const {query} = router;
 
     const onSelectFile = (e: React.ChangeEvent<HTMLInputElement>) => {
         const reader = new FileReader();
@@ -16,6 +19,11 @@ const useSelectFile = () => {
             }
         };
     };
+
+    React.useEffect(()=>{
+        if (!selectedFile) return;
+        setSelectedFile(""); 
+    },[query]);
 
     return {
         selectedFile,

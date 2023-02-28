@@ -1,9 +1,9 @@
-import { Flex, Stack, Text, Image, Icon, Link, Button } from "@chakra-ui/react";
+import { Post } from "@/atoms/postsAtom";
+import { Flex, Icon, Image, Stack, Text } from "@chakra-ui/react";
 import moment from "moment";
+import { useRouter } from "next/router";
 import React from "react";
 import { FaReddit } from "react-icons/fa";
-import { Post } from "@/atoms/postsAtom";
-import { useRouter } from "next/router";
 
 type TSearchItem = {
     searchResult: Post;
@@ -60,12 +60,9 @@ const SearchPost: React.FC<TSearchItem> = ({ searchResult, darkMode }) => {
                                     as={FaReddit}
                                     fontSize={"18pt"}
                                     mr={1}
-                                    bg={"white"} borderRadius={"full"}
-                                    color={
-                                        darkMode
-                                            ? "brand.100"
-                                            : "blue.500"
-                                    }
+                                    bg={"white"}
+                                    borderRadius={"full"}
+                                    color={darkMode ? "brand.100" : "blue.500"}
                                 />
                             )}
                             <Text
