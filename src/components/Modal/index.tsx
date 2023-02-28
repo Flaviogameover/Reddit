@@ -12,12 +12,12 @@ import {
 } from "@chakra-ui/react";
 import { auth } from "@firebaseComponent/clientApp";
 import OAuthInputs from "@/components/Modal/OAuthInputs";
-import OAuthButtons from "@modal/OAuthInputs/OAuthButtons";
-import ResetPassword from "@modal/OAuthInputs/ResetPassword";
+import OAuthButtons from "@/components/Modal/OAuthInputs/OAuthButtons";
+import ResetPassword from "@/components/Modal/OAuthInputs/ResetPassword";
 import React, { useEffect } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useRecoilState, useRecoilValue } from "recoil";
-import useDarkMode from "./../../hooks/useDarkMode";
+import useDarkMode from "@/hooks/useDarkMode";
 
 const OAuthModal: React.FC = () => {
     const [modalState, setModalState] = useRecoilState(authModalState);
