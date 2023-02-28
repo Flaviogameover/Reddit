@@ -5,11 +5,14 @@
       "experimentalDecorators": true,
       "emitDecoratorMetadata": true,
       "lib": ["dom", "dom.iterable", "esnext"],
-
+      "typeRoots": ["custom_types", "node_modules/@types"],
       "module": "esnext",
       "baseUrl": ".",
       "paths": {
-        "@/*": ["./src/*"],
+        "@/*": ["src/*"],
+        "@modal/*": ["src/components/modal/*"],
+        "@navbar/*": ["src/components/navbar/*"],
+        "@firebaseComponent/*": ["src/firebase/*"],
       },
 
       "resolveJsonModule": true,
@@ -19,12 +22,9 @@
       "isolatedModules": true,
       "jsx": "preserve",
       "incremental": true,
-
       "removeComments": true,
-
       "esModuleInterop": true,
-
-      "forceConsistentCasingInFileNames": true,
+      "forceConsistentCasingInFileNames": false,
       "alwaysStrict": true,
 
       "strict": true,
@@ -32,6 +32,7 @@
 
       "skipLibCheck": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "custom_types/*.d.ts"],
   "exclude": ["node_modules"]
+
 }
