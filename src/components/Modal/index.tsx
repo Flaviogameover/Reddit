@@ -11,7 +11,7 @@ import {
     Text,
 } from "@chakra-ui/react";
 import { auth } from "@firebaseComponent/clientApp";
-import OAuthInputs from "@modal/OAuthInputs";
+import OAuthInputs from "@/components/Modal/OAuthInputs";
 import OAuthButtons from "@modal/OAuthInputs/OAuthButtons";
 import ResetPassword from "@modal/OAuthInputs/ResetPassword";
 import React, { useEffect } from "react";
