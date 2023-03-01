@@ -11,7 +11,7 @@
 		"paths": {
 			"@/*": ["src/*"],
 			"@modal/*": ["src/components/Modal/*"],
-			"@navbar/*": ["src/components/Navbar/*"],
+			"@NavbarComponent/*": ["src/components/Navbar/*"],
 			"@firebaseComponent/*": ["src/firebase/*"]
 		},
 

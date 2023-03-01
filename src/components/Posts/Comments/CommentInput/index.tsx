@@ -1,7 +1,7 @@
 import { Button, Flex, Text, Textarea } from '@chakra-ui/react';
 import { User } from 'firebase/auth';
 import React from 'react';
-import AuthButtons from '@navbar/RightContent/OAuthButtons';
+import OAuthButtons from '@NavbarComponent/RightContent/OAuthButtons';
 
 type TCommentInput = {
 	commentText: string;
@@ -91,7 +91,7 @@ const CommentInput: React.FC<TCommentInput> = ({
 					>
 						Log in or sign up to leave a comment
 					</Text>
-					<AuthButtons />
+					<OAuthButtons />
 				</Flex>
 			)}
 		</Flex>
