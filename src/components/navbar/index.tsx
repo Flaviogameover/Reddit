@@ -3,7 +3,7 @@ import { defaultMenuItem } from '@/atoms/directoryMenuAtom';
 import { auth } from '@/firebase/clientApp';
 import useDirectory from '@/hooks/useDirectory';
 import { Flex, Image } from '@chakra-ui/react';
-import Directory from '@navbar/Directory';
+import Directory from '@NavbarComponent/Directory';
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useRecoilValue } from 'recoil';

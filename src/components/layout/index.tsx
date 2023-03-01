@@ -1,5 +1,5 @@
 import React from 'react';
-import Navbar from '@navbar/index';
+import Navbar from '@NavbarComponent/index';
 
 type TLayout = {
 	children: React.ReactNode;

@@ -1,7 +1,7 @@
 import { communityState } from '@/atoms/communitiesAtom';
 import { communityModalState } from '@/atoms/communityModalAtom';
 import CreateCommunityModal from '@/components/Modal/CreateCommunityModal';
-import MenuListItem from '@navbar/Directory/MenuListItem';
+import MenuListItem from '@NavbarComponent/Directory/MenuListItem';
 import { Box, Flex, Icon, MenuItem, Text } from '@chakra-ui/react';
 import React from 'react';
 import { AiFillPlusCircle } from 'react-icons/ai';

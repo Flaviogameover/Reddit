@@ -9,7 +9,7 @@ import {
 	MenuList,
 	Text,
 } from '@chakra-ui/react';
-import Communities from '@navbar/Directory/Communities';
+import Communities from '@NavbarComponent/Directory/Communities';
 import React from 'react';
 
 type TDirectory = {
