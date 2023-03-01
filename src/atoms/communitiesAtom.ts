@@ -1,34 +1,34 @@
-import { Timestamp } from "firebase/firestore";
-import { atom } from "recoil";
+import { Timestamp } from 'firebase/firestore';
+import { atom } from 'recoil';
 
 export interface Community {
-    id: string;
-    creatorId: string;
-    numberOfMembers: number;
-    privacyType: "public" | "private" | "restricted";
-    createdAt?: Timestamp;
-    imageURL?: string;
-    banner?: string;
+	id: string;
+	creatorId: string;
+	numberOfMembers: number;
+	privacyType: 'public' | 'private' | 'restricted';
+	createdAt?: Timestamp;
+	imageURL?: string;
+	banner?: string;
 }
 
 export interface CommunitySnippet {
-    communityId: string;
-    isModerator?: boolean;
-    imageURL?: string;
+	communityId: string;
+	isModerator?: boolean;
+	imageURL?: string;
 }
 
 export interface CommunityState {
-    mySnippets: CommunitySnippet[];
-    currentCommunity?: Community;
-    snippetsFetched: boolean;
+	mySnippets: CommunitySnippet[];
+	currentCommunity?: Community;
+	snippetsFetched: boolean;
 }
 
 const defaultCommunityState: CommunityState = {
-    mySnippets: [],
-    snippetsFetched: false,
+	mySnippets: [],
+	snippetsFetched: false,
 };
 
 export const communityState = atom<CommunityState>({
-    key: "communitiesState",
-    default: defaultCommunityState,
+	key: 'communitiesState',
+	default: defaultCommunityState,
 });
