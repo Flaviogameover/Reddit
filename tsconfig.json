@@ -12,6 +12,7 @@
 			"@/*": ["src/*"],
 			"@modal/*": ["src/components/Modal/*"],
 			"@navbar/*": ["src/components/Navbar/*"],
+			"@rightContent/*": ["src/components/Navbar/RightContent"],
 			"@firebaseComponent/*": ["src/firebase/*"]
 		},
 

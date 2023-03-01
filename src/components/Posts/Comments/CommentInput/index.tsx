@@ -1,7 +1,7 @@
 import { Button, Flex, Text, Textarea } from '@chakra-ui/react';
 import { User } from 'firebase/auth';
 import React from 'react';
-import AuthButtons from '@navbar/RightContent/AuthButtons';
+import AuthButtons from '@rightContent/AuthButtons';
 
 type TCommentInput = {
 	commentText: string;
