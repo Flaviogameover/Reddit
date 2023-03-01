@@ -1,10 +1,10 @@
+import React from 'react';
 import { authModalState } from '@/atoms/authModalAtom';
 import { darkModeState } from '@/atoms/darkmodeAtom';
 import { Button } from '@chakra-ui/react';
-import React from 'react';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 
-const AuthButtons: React.FC = () => {
+const OAuthButtons: React.FC = () => {
 	const setAuthModalState = useSetRecoilState(authModalState);
 	const useDarkModeState = useRecoilValue(darkModeState);
 	return (
@@ -46,4 +46,4 @@ const AuthButtons: React.FC = () => {
 		</>
 	);
 };
-export default AuthButtons;
+export default OAuthButtons;
