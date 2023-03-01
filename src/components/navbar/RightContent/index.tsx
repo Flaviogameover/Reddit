@@ -1,8 +1,8 @@
 import { darkModeState } from '@/atoms/darkmodeAtom';
-import AuthModal from '@/components/modal';
-import AuthButton from '@/components/Navbar/RightContent/AuthButtons';
-import Icons from '@/components/Navbar/RightContent/Icons';
-import UserMenu from '@/components/Navbar/RightContent/UserMenu';
+import AuthModal from '@modal/index';
+import AuthButton from '@navbar/RightContent/AuthButtons';
+import Icons from '@navbar/RightContent/Icons';
+import UserMenu from '@navbar/RightContent/UserMenu';
 import { Flex, Icon } from '@chakra-ui/react';
 import { User } from 'firebase/auth';
 import React from 'react';
