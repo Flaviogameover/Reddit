@@ -11,7 +11,7 @@ type _chakraComponentProps = {
 	pageProps: React.PropsWithChildren<any>;
 };
 
-const _ChakraComponent: React.FC<_chakraComponentProps> = ({
+const ChakraComponent: React.FC<_chakraComponentProps> = ({
 	Component,
 	pageProps,
 }) => {
@@ -26,4 +26,4 @@ const _ChakraComponent: React.FC<_chakraComponentProps> = ({
 		</ChakraProvider>
 	);
 };
-export default _ChakraComponent;
+export default ChakraComponent;
