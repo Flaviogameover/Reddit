@@ -6,12 +6,12 @@ import { NextComponentType, NextPageContext } from 'next/types';
 import React from 'react';
 import { useRecoilValue } from 'recoil';
 
-type _chakraComponentProps = {
+type chakraComponentProps = {
 	Component: NextComponentType<NextPageContext, any, any>;
 	pageProps: React.PropsWithChildren<any>;
 };
 
-const ChakraComponent: React.FC<_chakraComponentProps> = ({
+const ChakraComponent: React.FC<chakraComponentProps> = ({
 	Component,
 	pageProps,
 }) => {
