@@ -1,38 +1,37 @@
 {
-  "compilerOptions": {
-      "target": "esnext",
+	"compilerOptions": {
+		"target": "esnext",
 
-      "experimentalDecorators": true,
-      "emitDecoratorMetadata": true,
-      "lib": ["dom", "dom.iterable", "esnext"],
-      "typeRoots": ["custom_types", "node_modules/@types"],
-      "module": "esnext",
-      "baseUrl": ".",
-      "paths": {
-        "@/*": ["src/*"],
-        "@modal/*": ["src/components/modal/*"],
-        "@navbar/*": ["src/components/navbar/*"],
-        "@firebaseComponent/*": ["src/firebase/*"],
-      },
+		"experimentalDecorators": true,
+		"emitDecoratorMetadata": true,
+		"lib": ["dom", "dom.iterable", "esnext"],
+		"typeRoots": ["custom_types", "node_modules/@types"],
+		"module": "esnext",
+		"baseUrl": ".",
+		"paths": {
+			"@/*": ["src/*"],
+			"@modal/*": ["src/components/Modal/*"],
+			"@navbar/*": ["src/components/Navbar/*"],
+			"@firebaseComponent/*": ["src/firebase/*"]
+		},
 
-      "resolveJsonModule": true,
+		"resolveJsonModule": true,
 
-      "allowJs": true,
-      "moduleResolution": "node",
-      "isolatedModules": true,
-      "jsx": "preserve",
-      "incremental": true,
-      "removeComments": true,
-      "esModuleInterop": true,
-      "forceConsistentCasingInFileNames": false,
-      "alwaysStrict": true,
+		"allowJs": true,
+		"moduleResolution": "node",
+		"isolatedModules": true,
+		"jsx": "preserve",
+		"incremental": true,
+		"removeComments": true,
+		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": false,
+		"alwaysStrict": true,
 
-      "strict": true,
-      "noEmit": true,
+		"strict": true,
+		"noEmit": true,
 
-      "skipLibCheck": true
-  },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "custom_types/*.d.ts"],
-  "exclude": ["node_modules"]
-
+		"skipLibCheck": true
+	},
+	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "custom_types/*.d.ts"],
+	"exclude": ["node_modules"]
 }
