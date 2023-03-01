@@ -4,8 +4,6 @@ import { Button } from '@chakra-ui/react';
 import React from 'react';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 
-type TAuth = {};
-
 const AuthButtons: React.FC = () => {
 	const setAuthModalState = useSetRecoilState(authModalState);
 	const useDarkModeState = useRecoilValue(darkModeState);

@@ -166,6 +166,7 @@ const Recommendations: React.FC<TRecommendations> = ({ darkMode }) => {
 											>
 												{item.imageURL ? (
 													<Image
+														alt="community image"
 														borderRadius="full"
 														boxSize="28px"
 														src={item.imageURL}

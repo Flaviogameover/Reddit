@@ -8,7 +8,7 @@ import { User } from 'firebase/auth';
 import React from 'react';
 import { BsFillMoonFill, BsFillSunFill } from 'react-icons/bs';
 import { useRecoilState } from 'recoil';
-import useDarkMode from './../../../hooks/useDarkMode';
+import useDarkMode from '@/hooks/useDarkMode';
 
 type TRContent = {
 	user?: User | null;

@@ -21,7 +21,6 @@ type TCommunityPage = {
 const CommunityId: NextPage<TCommunityPage> = ({ communityData }) => {
 	const setCommunityStateValue = useSetRecoilState(communityState);
 	const { darkMode } = useRecoilValue(darkModeState);
-	if (!communityData) return <CommunityNotFound darkMode={darkMode} />;
 
 	useEffect(() => {
 		setCommunityStateValue((prev) => ({
@@ -29,6 +28,8 @@ const CommunityId: NextPage<TCommunityPage> = ({ communityData }) => {
 			currentCommunity: communityData,
 		}));
 	}, [communityData]);
+
+	if (!communityData) return <CommunityNotFound darkMode={darkMode} />;
 
 	return (
 		<>

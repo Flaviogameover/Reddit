@@ -40,6 +40,9 @@ const Directory: React.FC<TDirectory> = ({ darkMode }) => {
 					<Flex align={'center'}>
 						{directoryState.selectedMenuItem.imageURL ? (
 							<Image
+								alt={
+									directoryState.selectedMenuItem.displayText
+								}
 								borderRadius={'full'}
 								mr={2}
 								boxSize={'24px'}
