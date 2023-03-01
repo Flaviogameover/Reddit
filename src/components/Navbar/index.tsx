@@ -7,8 +7,8 @@ import Directory from '@NavbarComponent/Directory';
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useRecoilValue } from 'recoil';
-import RightContent from './rightContent';
-import SearchInput from './searchInput';
+import RightContent from '@NavbarComponent/RightContent';
+import SearchInput from '@NavbarComponent/SearchInput';
 
 const Navbar: React.FC = () => {
 	const [user, loading, error] = useAuthState(auth);
