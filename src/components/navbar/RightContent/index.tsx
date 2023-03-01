@@ -1,5 +1,5 @@
 import { darkModeState } from '@/atoms/darkmodeAtom';
-import AuthModal from '@modal/index';
+import AuthModal from '@modal/OAuthModal';
 import AuthButton from '@navbar/RightContent/AuthButtons';
 import Icons from '@navbar/RightContent/Icons';
 import UserMenu from '@navbar/RightContent/UserMenu';
