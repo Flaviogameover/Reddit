@@ -13,9 +13,11 @@ import usePosts from '@/hooks/usePosts';
 import { Button, Stack, Text } from '@chakra-ui/react';
 import {
 	collection,
+	DocumentData,
 	getDocs,
 	limit,
 	orderBy,
+	Query,
 	query,
 	where,
 } from 'firebase/firestore';
@@ -41,7 +43,6 @@ const Home: NextPage = () => {
 
 	const buildUserHomeFeed = async () => {
 		setLoading(true);
-
 		try {
 			if (communityStateValue.mySnippets.length) {
 				const myCommunityIds = communityStateValue.mySnippets.map(
@@ -83,7 +84,7 @@ const Home: NextPage = () => {
 				collection(firestore, 'posts'),
 				where('privacyType', '==', 'public'),
 				orderBy('upvotes', 'desc'),
-				limit(10)
+				limit(5)
 			);
 			// filter posts only public
 			// add pagination on scroll
@@ -133,33 +134,39 @@ const Home: NextPage = () => {
 	const loadMorePosts = async () => {
 		setLoadMore(true);
 		try {
-			if (communityStateValue.mySnippets.length) {
-				const tilimt = 5 * (page + 1);
+			const tilimt = 5 * (page + 1);
+			const isLogged = communityStateValue.mySnippets.length > 0;
+			let postQuery: Query<DocumentData>;
+			if (isLogged) {
 				const myCommunityIds = communityStateValue.mySnippets.map(
 					(snippet) => snippet.communityId
 				);
-				const postQuery = query(
+				postQuery = query(
 					collection(firestore, 'posts'),
 					where('communityId', 'in', myCommunityIds),
 					orderBy('createdAt', 'desc'),
 					limit(tilimt)
 				);
-				const postDocs = await getDocs(postQuery);
-				const posts = postDocs.docs.map(
-					(doc) =>
-						({
-							id: doc.id,
-							...doc.data(),
-						} as Post)
-				);
-
-				setPostStateValue((prev) => ({
-					...prev,
-					posts: posts as Post[],
-				}));
 			} else {
-				buildNoUserHomeFeed();
+				postQuery = query(
+					collection(firestore, 'posts'),
+					where('privacyType', '==', 'public'),
+					orderBy('upvotes', 'desc'),
+					limit(tilimt)
+				);
 			}
+			const postDocs = await getDocs(postQuery);
+			const posts = postDocs.docs.map(
+				(doc) =>
+					({
+						id: doc.id,
+						...doc.data(),
+					} as Post)
+			);
+			setPostStateValue((prev) => ({
+				...prev,
+				posts: posts as Post[],
+			}));
 		} catch (e: any) {
 			console.log('buildUserHomeFeed error: ', e.message);
 		}

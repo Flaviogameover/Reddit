@@ -35,18 +35,15 @@ const SearchInput: React.FC<TSearch> = ({ user }) => {
 					onClick={() => {
 						search && router.push(`/search?q=${search}&type=posts`);
 					}}
-					children={
-						<SearchIcon
-							color={darkMode ? 'dark_text' : 'gray.400'}
-							_hover={{
-								color: darkMode
-									? 'dark_border_hover'
-									: 'gray.500',
-							}}
-							mb={1}
-						/>
-					}
-				/>
+				>
+					<SearchIcon
+						color={darkMode ? 'dark_text' : 'gray.400'}
+						_hover={{
+							color: darkMode ? 'dark_border_hover' : 'gray.500',
+						}}
+						mb={1}
+					/>
+				</InputLeftElement>
 				<Input
 					placeholder="Search Reddit"
 					fontSize={'10pt'}
@@ -84,18 +81,17 @@ const SearchInput: React.FC<TSearch> = ({ user }) => {
 					<InputRightElement
 						cursor={'pointer'}
 						onClick={() => setSearch('')}
-						children={
-							<CloseIcon
-								color={darkMode ? 'dark_text' : 'gray.400'}
-								_hover={{
-									color: darkMode
-										? 'dark_border_hover'
-										: 'gray.500',
-								}}
-								mb={1}
-							/>
-						}
-					/>
+					>
+						<CloseIcon
+							color={darkMode ? 'dark_text' : 'gray.400'}
+							_hover={{
+								color: darkMode
+									? 'dark_border_hover'
+									: 'gray.500',
+							}}
+							mb={1}
+						/>
+					</InputRightElement>
 				)}
 			</InputGroup>
 		</Flex>
